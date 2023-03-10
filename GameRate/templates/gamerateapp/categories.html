@@ -1,0 +1,20 @@
+{% extends 'gamerateapp/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Categories
+{% endblock %}
+
+{% block body_block %}
+
+<div>
+    {% if categories %}
+        <ul>
+            {%for c in categories%}
+            <li><a href="{{% url 'gamerateapp:show_category' c.slug %}}">{{ c.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No categories present.</strong>
+    {% endif %}
+</div>

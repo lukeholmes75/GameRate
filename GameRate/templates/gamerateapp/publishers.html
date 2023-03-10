@@ -1,0 +1,20 @@
+{% extends 'gamerateapp/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Publishers
+{% endblock %}
+
+{% block body_block %}
+
+<div>
+    {% if publishers %}
+        <ul>
+            {%for p in publishers%}
+            <li><a href="{{% publisher.profile %}}">{{ p.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No publishers present.</strong>
+    {% endif %}
+</div>

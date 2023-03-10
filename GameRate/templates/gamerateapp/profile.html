@@ -1,0 +1,14 @@
+{% extends 'gamerateapp/base.html' %} 
+{% load staticfiles %} 
+
+{% block title_block %} 
+    {% if user.is_authenticated %}
+        {{ user.username }}
+    {% else %}
+        Unknown User
+    {% endif %}
+{% endblock %}
+
+{% block body_block %} 
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'gamerateapp/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    GameRate Home Page
+{% endblock %}
+
+{% block body_block %}
+
+<div>
+    <h2>Top Games</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if top_games %}
+        <ul>
+        {% for game in top_games %}
+            <div class="card" style="width: 18rem;">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <p class="card-text"><li><a href="{% game.profile %}">{{ game.title }}</a></li></p>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No top games yet!</strong>
+    {% endif %}
+    </div>
+</div>
+
+<div>
+    <h2>Top Publishers</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if top_publishers %}
+        <ul>
+        {% for publisher in top_publishers %}
+            <div class="card" style="width: 18rem;">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <p class="card-text"><li><a href="{{ game.profile }}">{{ publisher.name }}</a></li></a></li></p>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No top publishers yet!</strong>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}

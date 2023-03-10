@@ -1,0 +1,27 @@
+{% extends 'gamerateapp/base.html' %} 
+{% load staticfiles %} 
+
+{% block title_block %} 
+    {% if category %} 
+        {{ category.name }}
+    {% else %} 
+        Unknown Category
+    {% endif %} 
+{% endblock %}
+
+{% block body_block %} 
+    {% if category %}
+    <h1>{{ category.name }}</h1>
+    {% if games %}
+        <ul>
+            {%for game in games%}
+            <li><a href="{{% game.profile %}}">{{ game.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No games currently in category.</strong>
+    {% endif %}
+    {% else %}
+        The specified category does not exist.
+    {% endif %}
+{% endblock %}

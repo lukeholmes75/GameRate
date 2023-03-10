@@ -1,0 +1,14 @@
+{% extends 'gamerateapp/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if game %} 
+        {{ game.title }}
+    {% else %} 
+        Unknown Game
+    {% endif %} 
+{% endblock %}
+
+{% block body_block %}
+
+{% endblock %}
