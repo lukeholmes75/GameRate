@@ -36,8 +36,8 @@
                         <li class="nav-item "><a class="nav-link" href="{% url 'gamerateapp:categories' %}">Categories</a></li>
                         <li class="nav-item "><a class="nav-link" href="{% url 'gamerateapp:publishers' %}">Publishers</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item "><a class="nav-link" href="{% url 'gamerateapp:profile' %}">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next=/gamerateapp/">Logout</a></li>
+                            <li class="nav-item "><a class="nav-link" href="{% url 'gamerateapp:profile' %}">Profile</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'auth_logout' %}?next=/gamerateapp/">Logout</a></li>
                         {% else %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'registration_register' %}">Sign Up</a></li>
                         <li class="nav-item "><a class="nav-link" href="{% url 'auth_login' %}">Login</a></li>
@@ -63,7 +63,7 @@
                     <!-- FOOTER -->
                     <footer>
                         <p class="float-right"><a href="#">Back To Top</a></p>
-                        <p>&copy; 2023 WAD2 Team 9A &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+                        <p>&copy; 2023 WAD2 Team 9A &middot;</p>
                     </footer>
                 </main>
             </div>

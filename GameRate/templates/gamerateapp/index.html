@@ -7,12 +7,71 @@
 
 {% block body_block %}
 
+
+<!-- Criteria: Gameplay, Graphics, Story, Difficulty -->
 <div>
-    <h2>Top Games</h2>
+    <h2>Top in Gameplay</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% if top_games %}
+    {% if top_gameplay %}
         <ul>
-        {% for game in top_games %}
+        {% for game in top_gameplay %}
+            <div class="card" style="width: 18rem;">
+                <!--<img src="{% game.picture %}" class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <p class="card-text"><li><a href="{% % url 'gamerateapp:show_game' game.slug % %}">{{ game.name }}</a></li></p>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No top games yet!</strong>
+    {% endif %}
+    </div>
+</div>
+<div>
+    <h2>Top in Graphics</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if top_graphics %}
+        <ul>
+        {% for game in top_graphics %}
+            <div class="card" style="width: 18rem;">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <p class="card-text"><li><a href="{% game.profile %}">{{ game.title }}</a></li></p>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No top games yet!</strong>
+    {% endif %}
+    </div>
+</div>
+<div>
+    <h2>Top in Story</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if top_story %}
+        <ul>
+        {% for game in top_story %}
+            <div class="card" style="width: 18rem;">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <p class="card-text"><li><a href="{% game.profile %}">{{ game.title }}</a></li></p>
+                </div>
+            </div>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No top games yet!</strong>
+    {% endif %}
+    </div>
+</div>
+<div>
+    <h2>Top in Difficulty</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% if top_difficulty %}
+        <ul>
+        {% for game in top_difficulty %}
             <div class="card" style="width: 18rem;">
                 <!--<img src="..." class="card-img-top" alt="...">-->
                 <div class="card-body">
