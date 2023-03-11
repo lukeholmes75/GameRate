@@ -5,4 +5,7 @@ app_name = 'gamerateapp'
 
 urlpatterns = [
 	path('', views.index, name='index'),
+    path('categories/', view.categories, name='categories'),
+    path('category/<slug:category_name_slug>/' views.category, name"category"),
+    path('game/<slug:game_name_slug>/' views.game, name"game")'
 ]
