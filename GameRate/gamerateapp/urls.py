@@ -11,4 +11,8 @@ urlpatterns = [
     path('game/<slug:game_name_slug>/review/' view.review, name="review"),
     path('profile/<username>/', views.profile, name='profile'),
     path('publisher/', view.publishers, name='publishers'),
+    path('add_game/', view.add_game, name='add_game'),
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
 ]
