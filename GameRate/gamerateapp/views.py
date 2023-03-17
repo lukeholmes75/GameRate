@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from gamerateapp.forms import ReviewForm
 from django.urls import reverse
 from gamerateapp.forms import UserForm, UserProfileForm
+
 # Create your views here.
 
 def index(request):
