@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from gamerateapp.models import Game
 from gamerateapp.models import Category
 from gamerateapp.models import Review
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from gamerateapp.forms import ReviewForm
+from django.contrib.auth import logout, authenticate, login
+from gamerateapp.forms import ReviewForm, UserForm, UserProfileForm
 from django.urls import reverse
 from gamerateapp.forms import UserForm, UserProfileForm
 # Create your views here.
@@ -137,3 +137,54 @@ def publishers(request, username):
 
     
     return render(request, 'gamerateapp/publishers.html', context_dict)
+
+def register(request):
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+            
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors, profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+    
+    return render(request, 'gamerateapp/registration_file.html',
+                    context= {'user_form': user_form,
+                              'profile_form': profile_form,
+                              'registered': registered})
+    
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('gamerateapp:index'))
+            else:
+                return HttpResponse("Your GameRate account is disabled")
+        else:
+            print(f"Invalid login details")
+            return HttpResponse("Invalid login details")
+
+    else:
+        return render(request, 'gamerateapp/login.html')
+
